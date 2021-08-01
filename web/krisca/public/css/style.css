@@ -1,0 +1,17 @@
+:root{
+    --color_beige: #FAF1E6;
+    --color_blanco: #FDFAF6;
+    --color_menta: #E4EFE7;
+    --color_verde: #064420;
+
+}
+
+#bg{
+    background-color: var(--color_menta);
+    color: var(--color_blanco);
+}
+
+.logo{
+    height: 100px;
+    width: auto;
+}
