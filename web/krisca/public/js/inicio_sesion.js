@@ -33,3 +33,7 @@ document.querySelector("#iniciar-cliente-btn").addEventListener("click", async()
 
 });
 
+document.querySelector("#iniciar-admin-btn").addEventListener("click", ()=>{
+    window.location.href="admin";
+});
+

@@ -38,6 +38,11 @@ document.querySelector("#registrar-btn").addEventListener("click", async()=>{
                     icon: "warning",
                     html: errores.join("<br />")
                 });
+            }else{
+                if(pass!=passR){
+                    errores.push("Error, las contraseñas no son iguales.");
+
+                }
             }
         }
 
