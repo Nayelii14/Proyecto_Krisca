@@ -24,6 +24,10 @@ class ClientesController extends Controller
         //}
         
     }
+    public function getAll(){
+        $clientes=Cliente::all();
+        return $clientes;
+    }
 
     public function crearCliente(Request $request){
         $input = $request->all();
@@ -31,7 +35,9 @@ class ClientesController extends Controller
         $cliente->nombre = $input["nombre"];
         $cliente->apellidos = $input["apellidos"];
         $cliente->rut = $input["rut"];
+        $cliente->num_celular = $input["num_celular"];
         $cliente->pass = $input["pass"];
+        $cliente->correo = $input["correo"];
 
         $cliente->save();
         return $cliente;
@@ -54,6 +60,8 @@ class ClientesController extends Controller
         $cliente->apellidos = $input["apellidos"];
         $cliente->pass = $input["pass"];
         $cliente->rut = $input["rut"];
+        $cliente->num_celular = $input["num_celular"];
+        $cliente->correo = $input["correo"];
         $cliente->save();
         return $cliente; 
     }

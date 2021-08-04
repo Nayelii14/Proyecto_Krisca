@@ -49,21 +49,12 @@
                             <label for="rut-txt">Rut</label>
                         </div>
                     </div>
-                    <div class="col-12">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck3" aria-describedby="invalidCheck3Feedback" required>
-                        <label class="form-check-label" for="invalidCheck3">
-                        Aceptar términos y condiciones.
-                        </label>
-                        <div id="invalidCheck3Feedback" class="feedback">
-                        Debes estar de acuerdo antes de registrarte.
-                        </div>
-                    </div>
-                    </div>
-                    <div class="col-12">
-                    <button class="btn btn-success" id="registrar-btn" type="submit">Registrar</button>
-                    </div>
                 </form>
+            </div>
+            <div class="card-footer">
+                <div class="col-12">
+                    <button class="btn btn-success" id="reg-cliente-btn">Registrar</button>
+                </div>
             </div>
         </div>
     </div>

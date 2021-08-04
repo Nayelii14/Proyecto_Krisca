@@ -1,7 +1,8 @@
 document.querySelector("#iniciar-cliente-btn").addEventListener("click", async()=>{
     let correo = document.querySelector("#correo-txt").value;
     let pass = document.querySelector("#pass-txt").value;
-    let resp = getClienteCorreo(correo);
+    let resp = await getAll(correo);
+
 
     let errores = [];
     if(correo==""){
@@ -13,7 +14,7 @@ document.querySelector("#iniciar-cliente-btn").addEventListener("click", async()
     }
 
     if(errores.length==0){
-        if(Object.keys(resp).length==0){
+        if(resp.length==0){
             errores.push("No hay una cuenta asociada");
             errores.push("Recomendamos crear una");
             Swal.fire({
@@ -21,6 +22,22 @@ document.querySelector("#iniciar-cliente-btn").addEventListener("click", async()
                 icon: "warning",
                 html: errores.join("<br />")
             });
+        }else{
+            let correcto=false;
+            for(let i=0;i<resp.length;i++){
+                if(resp[i].pass==pass){
+                    correcto=true;
+                }
+            }
+            if(correcto==true){
+                window.location.href="admin";
+            }else{
+                Swal.fire({
+                    title: "Error al ingresar",
+                    icon: "warning",
+                    text: "Contraseña incorrecta"
+                }); 
+            }
         }
     }else{
         Swal.fire({
@@ -33,7 +50,7 @@ document.querySelector("#iniciar-cliente-btn").addEventListener("click", async()
 
 });
 
-document.querySelector("#iniciar-admin-btn").addEventListener("click", ()=>{
-    window.location.href="admin";
-});
+//document.querySelector("#iniciar-admin-btn").addEventListener("click", ()=>{
+    //window.location.href="admin";
+//});
 

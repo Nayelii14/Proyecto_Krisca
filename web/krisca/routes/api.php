@@ -53,6 +53,7 @@ Route::post("categoria/actualizar", [CategoriasController::class, "actualizarCat
 
 //CLIENTE
 Route::get("cliente/getId", [ClientesController::class, "getClienteId"]);
+Route::get("cliente/getAll", [ClientesController::class, "getAll"]);
 Route::get("cliente/getCorreo", [ClientesController::class, "getClienteCorreo"]);
 Route::post("cliente/post", [ClientesController::class, "crearCliente"]);
 Route::post("cliente/eliminar", [ClientesController::class, "eliminarCliente"]);
