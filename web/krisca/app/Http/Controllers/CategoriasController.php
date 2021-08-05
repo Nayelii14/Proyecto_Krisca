@@ -14,12 +14,13 @@ class CategoriasController extends Controller
 
     public function crearCategoria(Request $request){
         $input = $request->all();
+        $nom_categoria=$input["nom_categoria"];
         $categoria = new Categoria();
-        $categoria->nombre=$input["nom_categoria"];
+        $categoria->nom_categoria=$nom_categoria;
         $categoria->save();
 
 
-        return $producto;
+        return $categoria;
     }
 
     public function eliminarCategoria(Request $request){

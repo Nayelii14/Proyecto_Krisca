@@ -12,7 +12,12 @@
         </div>
     </div>
     <div class="card-footer">
-        <button id="registrar-btn" class="btn btn-success">Agregar Categoría</button>
+        <button id="registrar-categoria-btn" class="btn btn-success">Agregar Categoría</button>
     </div>
 </div>
+@endsection
+
+@section('js')
+<script src="{{asset('js/servicios/categoriasService.js')}}"></script>
+<script src="{{asset('js/categoria.js')}}"></script>
 @endsection
