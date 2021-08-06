@@ -8,7 +8,6 @@ document.querySelector("#registrar-categoria-btn").addEventListener("click", asy
     }
 
     if(errores.length!=0){
-        console.log("xd");
         Swal.fire({
             title: "Error",
             icon: "warning",

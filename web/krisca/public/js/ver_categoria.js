@@ -29,7 +29,7 @@ const actualizacion = async function(){
     for(let i=0; i<resp.length;i++){
         if(resp[i].id==id){
             categoria_txt.value = resp[i].nom_categoria;
-            categoria_txt.id=id;
+            categoria_txt.idCat=id;
         }
     }
 }
@@ -65,9 +65,8 @@ const cargarTabla = (categorias)=>{
 
 document.querySelector("#guardar-cambios-btn").addEventListener("click", async()=>{
     let categoria_txt = document.querySelector("#categoria-txt");
-    console.log(categoria_txt);
     //let id = document.querySelector("#categoria-txt").id;
-    let errores={};
+    let errores=[];
     if(categoria_txt===""){
         errores.push("Ingrese un nombre válido");
     }
@@ -83,7 +82,7 @@ document.querySelector("#guardar-cambios-btn").addEventListener("click", async()
         let encontrado = false;
 
         for(let i=0;i<resp.length;i++){
-            if(resp[i].nom_categoria == nom_categoria){
+            if(resp[i].nom_categoria == document.querySelector("#categoria-txt").value){
                 encontrado = true;
             }
         }
@@ -96,13 +95,25 @@ document.querySelector("#guardar-cambios-btn").addEventListener("click", async()
             });
         }else{
             let categoria={};
-            categoria.nom_categoria=nom_categoria;
-            Swal.fire({
-                title: "Categoria creada",
-                icon: "success",
-                text: "La acción ha sido realiza con éxito"
-            });
+            categoria.id=categoria_txt.idCat;
+            categoria.nom_categoria=categoria_txt.value;
+            let respuesta= await actualizarCategoria(categoria);
+            if(respuesta!=false){
+                Swal.fire({
+                    title: "Categoría actualizada",
+                    icon: "success",
+                    text: "La acción ha sido realiza con éxito"
+                });
+                let categorias=await getCategorias();
+                cargarTabla(categorias);
 
+            }else{
+                Swal.fire({
+                    title: "Error",
+                    icon: "error",
+                    text: "No se pudo realizar la acción"
+                });
+            }
         }
     }
 });

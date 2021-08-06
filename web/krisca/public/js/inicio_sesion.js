@@ -30,7 +30,7 @@ document.querySelector("#iniciar-cliente-btn").addEventListener("click", async()
                 }
             }
             if(correcto==true){
-                window.location.href="admin";
+                window.location.href="/krisca/public";
             }else{
                 Swal.fire({
                     title: "Error al ingresar",
@@ -50,7 +50,7 @@ document.querySelector("#iniciar-cliente-btn").addEventListener("click", async()
 
 });
 
-//document.querySelector("#iniciar-admin-btn").addEventListener("click", ()=>{
-    //window.location.href="admin";
-//});
+document.querySelector("#iniciar-admin-btn").addEventListener("click", ()=>{
+    window.location.href="admin";
+});
 

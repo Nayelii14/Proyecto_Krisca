@@ -17,7 +17,7 @@ class ProductosController extends Controller
     public function getFiltro(Request $request){
         $input=request->all();
         $filtro=$input["filtro"];
-        $producto = Producto::where("cod_categoria",$filtro)->get();
+        $producto = Producto::where("cod_categoria",intval($filtro))->get();
         return $producto;
     }
 

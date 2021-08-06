@@ -28,7 +28,7 @@ const eliminarCategoria = async(id)=>{
 
 const actualizarCategoria = async(categoria)=>{
     try{
-        let resp = await axios.get("api/categoria/actualizar",categoria,{
+        let resp = await axios.post("api/categoria/actualizar",categoria,{
             headers: {
                 'Content-Type':'application/json'
             }

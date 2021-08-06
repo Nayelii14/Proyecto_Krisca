@@ -37,6 +37,7 @@ class CategoriasController extends Controller
         $input = $request->all();
         $id = $input["id"];
         $categoria = Categoria::findOrFail($id);
+        $categoria->nom_categoria=$input["nom_categoria"];
         $categoria->save();
         return $categoria; 
     }
