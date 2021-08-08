@@ -42,7 +42,7 @@
                     <a class="nav-link" href="{{route('nosotros')}}" tabindex="-1" aria-label="true">Nosotros</a>
                   </li>
                 </ul>
-                <form class="d-flex">
+                <form class="d-flex invisible" id="buscar">
                   <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
                   <button class="btn btn-outline-success" type="submit">Buscar</button>
                 </form>

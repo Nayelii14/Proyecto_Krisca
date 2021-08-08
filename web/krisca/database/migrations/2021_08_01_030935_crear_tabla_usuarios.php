@@ -19,6 +19,7 @@ class CrearTablaUsuarios extends Migration
             $table->string("apellidos",30);
             $table->string("pass",15);
             $table->char("nivel_acceso",1);
+            $table->string("correo",30);
             $table->timestamps();
         });
     }

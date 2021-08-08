@@ -12,7 +12,12 @@ class UsuariosController extends Controller
         $usuario = Usuario::where("id",$filtro)->get();
         return $usuario;
     }
-
+    public function getUsuarioCorreo(Request $request){
+        $input = $request->all();
+        $filtro = $input["correo"];
+        $usuario = Usuario::where("correo",$filtro)->get();
+        return $usuario;
+    }
     public function crearUsuario(Request $request){
         $input = $request->all();
         $usuario =new Usuario();
@@ -20,6 +25,7 @@ class UsuariosController extends Controller
         $usuario->apellidos = $input["apellidos"];
         $usuario->pass = $input["pass"];
         $usuario->nivel_acceso = $input["nivel_acceso"];
+        $usuario->correo = $input["correo"];
 
         $usuario->save();
         return $usuario;

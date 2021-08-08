@@ -35,38 +35,27 @@
                     <label for="passR-txt">Repetir contraseña</label>
                 </div>
             </div>
-            <div class="col-4 col-md-4 col-lg-4">
+            <div class="col-12 col-md-12 col-lg-12">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="fono-txt" placeholder="celular">
-                    <label for="fono-txt">Número celular</label>
-                </div>
-            </div>
-            <div class="col-8 col-md-8 col-lg-8">
-                <div class="form-floating mb-3">
-                    <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+                    <select class="form-select" id="usuario-select" aria-label="Floating label select example">
                         <option>--------</option>
-                        <option value="1">Usuario Admin</option>
-                        <option value="2">Usuario Vendedor</option>
+                        <option value="A">Usuario Admin</option>
+                        <option value="V">Usuario Vendedor</option>
                     </select>
-                    <label for="floatingSelect">Selección tipo de acceso</label>
+                    <label for="usuario-select">Selección tipo de acceso</label>
                 </div>
-            </div>
-            <div class="col-12">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="invalidCheck3" aria-describedby="invalidCheck3Feedback" required>
-                <label class="form-check-label" for="invalidCheck3">
-                Aceptar términos y condiciones.
-                </label>
-                <div id="invalidCheck3Feedback" class="feedback">
-                Debes estar de acuerdo antes de registrarte.
-                </div>
-            </div>
             </div>
             </div>
         </div>
         <div class="card-footer">
-            <button class="btn btn-success" id="registrar-btn" type="submit">Registrar</button>
+            <button class="btn btn-success" id="agregar-usuario-btn" type="submit">Agregar</button>
         </div>
-        
+
     </div>
+@endsection
+
+@section('js')
+<script src="{{asset('js/servicios/usuariosService.js')}}"></script>
+<script src="{{asset('js/ag_usuario.js')}}"></script>
+
 @endsection

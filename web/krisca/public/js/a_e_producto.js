@@ -1,5 +1,5 @@
 const iniciarEliminacion = async function(){
-    let id = this.idCategoria;
+    let id = this.idProducto;
     let resp = await Swal.fire({
         title:"Esta seguro?", 
         text:"Esta operacion es irreversible",
@@ -8,12 +8,13 @@ const iniciarEliminacion = async function(){
     });
 
     if(resp.isConfirmed){
-        if(await eliminarCategoria(id)){
+        if(await eliminarProducto(id)){
+            let productos = await getProductos();
             let categorias = await getCategorias();
-            cargarTabla(categorias);
-            Swal.fire("Categoria Eliminada", "Categoria eliminada con éxito", "success");
+            cargarTabla(productos, categorias);
+            Swal.fire("Producto Eliminado", "Producto eliminado con éxito", "success");
         }else{
-            Swal.fire("Error", "No se pudo eliminar categoria", "error");
+            Swal.fire("Error", "No se pudo eliminar producto", "error");
         }
     }else{
         Swal.fire("Cancelado", "La eliminación ha sido cancelada", "info");
@@ -23,23 +24,45 @@ const iniciarEliminacion = async function(){
 
 const cargarSelect = (categorias)=>{
     let select = document.querySelector("#categoria-select");
+    let select_act = document.querySelector("#categoria-act-txt");
     for(let i=0;i<categorias.length;i++){
         let option = document.createElement("option");
-        option.value = categorias[i].id.toString();
+        option.value = categorias[i].id;
         option.innerText = categorias[i].nom_categoria;
         select.appendChild(option);
     }
 };
 
+const cargarSelectActualizar = (categorias)=>{
+    let select_act = document.querySelector("#categoria-act-txt");
+    for(let i=0;i<categorias.length;i++){
+        let option = document.createElement("option");
+        option.value = categorias[i].nom_categoria;
+        option.innerText = categorias[i].nom_categoria;
+        select_act.appendChild(option);
+    }
+};
+
 const actualizacion = async function(){
-    let id = this.idCategoria;
-    let resp = await getCategorias();
-    let categoria_txt = document.querySelector("#categoria-txt");
+    let id = this.idProducto;
+    let resp = await getProductos();
+    let nombre = document.querySelector("#nombre-producto-txt");
+    let talla = document.querySelector("#talla-producto-txt");
+    let precio = document.querySelector("#precio-producto-txt");
+    let categoria_txt = document.querySelector("#categoria-act-txt");
+    let boton = document.querySelector("#guardar-cambios-btn");
     categoria_txt.disabled = false;
+    nombre.disabled = false;
+    talla.disabled = false;
+    precio.disabled = false;
     for(let i=0; i<resp.length;i++){
         if(resp[i].id==id){
-            categoria_txt.value = resp[i].nom_categoria;
-            categoria_txt.idCat=id;
+            nombre.value = resp[i].nombre;
+            talla.value = resp[i].talla;
+            precio.value = resp[i].precio;
+            categoria_txt.selected = resp[i].nom_categoria;
+            boton.idProducto = id;
+            boton.stock = this.stock;
         }
     }
 }
@@ -75,6 +98,7 @@ const cargarTabla = (productos, categorias)=>{
         btnActualizar.innerText= "Actualizar";
         btnActualizar.classList.add("btn","btn-info");
         btnActualizar.idProducto = productos[i].id;
+        btnActualizar.stock = productos[i].stock;
         btnActualizar.addEventListener("click", actualizacion);
         tdAcciones.appendChild(btnEliminar);
         tdAcciones.appendChild(btnActualizar);
@@ -92,17 +116,30 @@ const cargarTabla = (productos, categorias)=>{
 
 document.querySelector("#categoria-select").addEventListener("change", async()=>{
     let filtro = document.querySelector("#categoria-select").value;
-    let resp = await filtroProducto(filtro);
     let categorias = await getCategorias();
-    cargarTabla(resp, categorias);
+    console.log(filtro);
+    let resp = await filtroProducto(filtro);
 
+    cargarTabla(resp, categorias);
 });
-/*document.querySelector("#guardar-cambios-btn").addEventListener("click", async()=>{
-    let categoria_txt = document.querySelector("#categoria-txt");
+document.querySelector("#guardar-cambios-btn").addEventListener("click", async()=>{
+    let nombre = document.querySelector("#nombre-producto-txt");
+    let talla = document.querySelector("#talla-producto-txt");
+    let precio = document.querySelector("#precio-producto-txt");
+    let categoria_txt = document.querySelector("#categoria-act-txt");
     //let id = document.querySelector("#categoria-txt").id;
     let errores=[];
-    if(categoria_txt===""){
+    if(nombre===""){
         errores.push("Ingrese un nombre válido");
+    }
+    if(talla===""){
+        errores.push("Ingrese una talla válida");
+    }
+    if(precio===""){
+        errores.push("Ingrese un precio válido");
+    }
+    if(categoria_txt==="none"){
+        errores.push("Ingrese una categoria válida");
     }
 
     if(errores.length!=0){
@@ -111,53 +148,52 @@ document.querySelector("#categoria-select").addEventListener("change", async()=>
             icon: "warning",
             html: errores.join("<br />")
         });
+    
     }else{
-        let resp = await getCategorias();
-        let encontrado = false;
+        //let resp = await getProductos();
+        let categorias = await getCategorias();
 
-        for(let i=0;i<resp.length;i++){
-            if(resp[i].nom_categoria == document.querySelector("#categoria-txt").value){
-                encontrado = true;
+        let producto = {};
+        producto.id = document.querySelector("#guardar-cambios-btn").idProducto;
+        producto.nombre = nombre.value;
+        producto.talla = talla.value;
+        producto.precio = precio.value;
+        producto.stock = document.querySelector("#guardar-cambios-btn").stock;
+        let num;
+        for(let i=0; i<categorias.length;i++){
+            if(categoria_txt.value==categorias[i].nom_categoria){
+                num = categorias[i].id;
             }
         }
-        if(encontrado == true){
-            errores.push("Ya hay una categoría con este nombre");
+        console.log(num);
+        producto.cod_categoria = num;
+        console.log(producto);
+        let respuesta= await actualizarProducto(producto);
+        if(respuesta!=false){
+            Swal.fire({
+                title: "Producto actualizado",
+                icon: "success",
+                text: "La acción ha sido realiza con éxito"
+            });
+            let productos = await getProductos();
+            
+            cargarTabla(productos, categorias);
+
+        }else{
             Swal.fire({
                 title: "Error",
-                icon: "warning",
-                html: errores.join("<br />")
+                icon: "error",
+                text: "No se pudo realizar la acción"
             });
-        }else{
-            let categoria={};
-            categoria.id=categoria_txt.idCat;
-            categoria.nom_categoria=categoria_txt.value;
-            let respuesta= await actualizarCategoria(categoria);
-            if(respuesta!=false){
-                Swal.fire({
-                    title: "Categoría actualizada",
-                    icon: "success",
-                    text: "La acción ha sido realiza con éxito"
-                });
-                let categorias=await getCategorias();
-                cargarTabla(categorias);
-
-            }else{
-                Swal.fire({
-                    title: "Error",
-                    icon: "error",
-                    text: "No se pudo realizar la acción"
-                });
-            }
         }
     }
-});*/
+});
 
 document.addEventListener("DOMContentLoaded", async ()=>{
     let categorias=await getCategorias();
     cargarSelect(categorias);
+    cargarSelectActualizar(categorias);
     let productos=await getProductos();
     cargarTabla(productos, categorias);
-    
 
 });
-

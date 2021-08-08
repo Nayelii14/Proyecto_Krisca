@@ -31,6 +31,7 @@ Route::post("productos/actualizar", [ProductosController::class, "actualizarProd
 
 //USUARIO
 Route::get("usuarios/get", [UsuariosController::class, "getUsuario"]);
+Route::get("usuarios/getCorreo", [UsuariosController::class, "getUsuarioCorreo"]);
 Route::post("usuarios/post", [UsuariosController::class, "crearUsuario"]);
 Route::post("usuarios/eliminar", [UsuariosController::class, "eliminarUsuario"]);
 Route::post("usuarios/actualizar", [UsuariosController::class, "actualizarUsuario"]);

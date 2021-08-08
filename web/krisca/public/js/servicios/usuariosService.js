@@ -1,4 +1,4 @@
-
+//CLIENTE
 const getClienteCorreo = async (filtro = "todos")=>{
     let resp;
     if(filtro == "todos"){
@@ -23,3 +23,19 @@ const getAll = async ()=>{
 
     return resp.data;
 }
+
+//USUARIO
+const crearUsuario = async(usuario)=>{
+    let resp = await axios.post("api/usuarios/post", usuario, {
+        headers:{
+            'Content-Type':'application/json'
+        }
+    });
+    return resp.data;
+};
+
+const getUsuarioCorreo = async (filtro = "todos")=>{
+    let resp;
+    resp = await axios.get(`api/usuarios/getCorreo?correo=${filtro}`);
+    return resp.data;
+};

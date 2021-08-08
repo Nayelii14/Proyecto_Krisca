@@ -45,9 +45,9 @@
                         <label for="talla-producto-txt">Talla producto</label>
                     </div>
                     <div class="form-floating mb-3">
-                        <select class="form-select" disabled id="categoria-txt" aria-label="categoria">
+                        <select class="form-select" disabled id="categoria-act-txt" aria-label="categoria">
                         </select>
-                        <label for="categoria-txt">Tipos de categorias</label>
+                        <label for="categoria-act-txt">Tipos de categorias</label>
                     </div>
                     <div class="form-floating mb-3">
                         <input type="number" class="form-control" disabled id="precio-producto-txt" placeholder="precio-producto">
