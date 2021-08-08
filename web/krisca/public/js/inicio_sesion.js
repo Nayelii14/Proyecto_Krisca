@@ -1,7 +1,7 @@
 document.querySelector("#iniciar-cliente-btn").addEventListener("click", async()=>{
     let correo = document.querySelector("#correo-txt").value;
     let pass = document.querySelector("#pass-txt").value;
-    let resp = await getAll(correo);
+    let resp = await getClienteCorreo(correo);
 
 
     let errores = [];

@@ -2,7 +2,7 @@
 
 @section('body')
 <div class="row">
-    <div class="col-lg-5 col-md-6 col-sm-12 mx-auto mt-5">
+    <div class="col-lg-5 col-md-6 col-sm-8 mx-auto mt-5">
         <div class="card">
             <div class="card-header text-dark text-center" id="bg">
                 <span>Iniciar sesión</span>

@@ -15,4 +15,17 @@
     height: 100px;
     width: auto;
 }
+#mapid { 
+    width: 1370px; 
+    height: 400px; 
+    position: relative; 
+    outline: none;
+}
+
+
+
+@media screen and (max-width: 1300px) {
+    #mapid {  width:100%; }
+
+}
 
