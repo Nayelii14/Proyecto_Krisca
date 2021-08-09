@@ -2,5 +2,7 @@
 @extends('layouts.master')
 
 @section('body')
-    <h1>Hola</h1>
+    <div class="card-header text-center">
+        <img src="{{asset('img/nuevos_productos.png')}}" id="imagen">
+    </div>
 @endsection

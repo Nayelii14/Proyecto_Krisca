@@ -3,7 +3,8 @@
 @section('body')
 <div class="card text-center">
     <div class="card-header">
-        <h1 class="animate__animated animate__heartBeat">Nosotros</h1>
+        <img src="{{asset('img/nosotros.png')}}" class="animate__animated animate__heartBeat">
+        <!--<h1 class="animate__animated animate__heartBeat">Nosotros</h1>-->
         
     </div>
     <div class="card-body ms-5 me-5">
