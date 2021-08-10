@@ -18,6 +18,8 @@ const crearCliente = async(cliente)=>{
     return resp.data;
 };
 
+
+
 const getAll = async ()=>{
     let resp=await axios.get("api/cliente/getAll");
 
@@ -34,8 +36,21 @@ const crearUsuario = async(usuario)=>{
     return resp.data;
 };
 
+const eliminarUsuario = async(id)=>{
+    let resp = await axios.post("api/usuarios/eliminar", {id}, {
+        headers:{
+            'Content-Type':'application/json'
+        }
+    });
+    return resp.data;
+}
+
 const getUsuarioCorreo = async (filtro = "todos")=>{
     let resp;
     resp = await axios.get(`api/usuarios/getCorreo?correo=${filtro}`);
     return resp.data;
 };
+const getUsuariosAll = async()=>{
+    let resp = await axios.get("api/usuarios/getAll");
+    return resp.data;
+}

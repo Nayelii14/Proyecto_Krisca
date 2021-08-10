@@ -32,7 +32,7 @@
                             <a href="{{route('registrar_cliente')}}">Regístrese aquí</a>
                         </div>
                         <div class="col-6 col-md col-lg">
-                            <a href="{{route('error_pass')}}">¿Olvidó su contraseña?</a>
+                            <a href="{{route('error_pass')}}">¿Olvidó su contraseña de cliente?</a>
                         </div>
                     </div>
                 </div>

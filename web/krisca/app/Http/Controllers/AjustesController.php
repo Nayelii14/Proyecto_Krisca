@@ -25,14 +25,16 @@ class AjustesController extends Controller
         $ajuste->id_producto = $producto["id"];
         $ajuste->fecha_ajuste = $input["fecha_ajuste"];
         $ajuste->cantidad = $input["cantidad"];
-        $ajuste->tipo_ajuste = $input["tipo_ajuste"];
+        
         $ajuste->id_usuario = $usuario["id"];
 
         if($input["tipo_ajuste"]=="aumento"){
             $producto->stock = $producto["stock"]+$input["cantidad"];
+            $ajuste->tipo_ajuste = "A";
 
         }else if($input["tipo_ajuste"]=="disminucion"){
             $producto->stock = $producto["stock"]-$input["cantidad"];
+            $ajuste->tipo_ajuste = "D";
         }
         
         $producto->save();

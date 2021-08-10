@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
    crossorigin=""/>
+    <link rel="stylesheet" href="vendor/fontawesome-free-5.15.3-web/css/all.min.css">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     
     <title>Bienvenidos a Krisca</title>
@@ -20,7 +21,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light" id="bg">
             <div class="container-fluid" id="bg">
-              <a class="navbar-brand" href="#" ><img src="{{asset('img/logo.png')}}" alt="" class="logo"></a>
+              <a class="navbar-brand" href="#" ><img src="{{asset('img/logo.png')}}" alt="" class="logo animate__animated animate__fadeIn"></a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -37,8 +38,7 @@
                       Cuenta
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                      <li><a class="dropdown-item" href="{{route('cuenta')}}">Ver Perfil</a></li>
-                      <li><hr class="dropdown-divider"></li>
+
                       <li><a class="dropdown-item" href="{{route('inicio_sesion')}}">Inicio Sesión</a></li>
                     </ul>
                   </li>
@@ -54,9 +54,11 @@
             </div>
           </nav>
     </header>
-
+    <main>
+      @yield('body')
+    </main>
     <!-- Optional JavaScript; choose one of the two! -->
-    @yield('body')
+    
     <!-- Option 1: Bootstrap Bundle with Popper -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

@@ -38,7 +38,6 @@ document.querySelector("#registrar-categoria-btn").addEventListener("click", asy
                 icon: "success",
                 text: "La acción ha sido realiza con éxito"
             });
-
         }
     }
 });

@@ -25,6 +25,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //PRODUCTO
 Route::get("productos/get", [ProductosController::class, "getProductos"]);
 Route::get("productos/filtrar", [ProductosController::class, "getFiltro"]);
+Route::get("productos/getId",[ProductosController::class, "getId"]);
 Route::post("productos/post", [ProductosController::class, "crearProducto"]);
 Route::post("productos/eliminar", [ProductosController::class, "eliminarProducto"]);
 Route::post("productos/actualizar", [ProductosController::class, "actualizarProducto"]);
@@ -32,6 +33,7 @@ Route::post("productos/actualizar", [ProductosController::class, "actualizarProd
 //USUARIO
 Route::get("usuarios/get", [UsuariosController::class, "getUsuario"]);
 Route::get("usuarios/getCorreo", [UsuariosController::class, "getUsuarioCorreo"]);
+Route::get("usuarios/getAll",[UsuariosController::class,"getAllUsers"]);
 Route::post("usuarios/post", [UsuariosController::class, "crearUsuario"]);
 Route::post("usuarios/eliminar", [UsuariosController::class, "eliminarUsuario"]);
 Route::post("usuarios/actualizar", [UsuariosController::class, "actualizarUsuario"]);

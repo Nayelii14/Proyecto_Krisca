@@ -18,7 +18,9 @@ document.querySelector("#reg-cliente-btn").addEventListener("click", async()=>{
     if(fono==""){
         errores.push("Debe ingresar un número de celular o teléfono");
     }
-
+    if(apellidos ===""){
+        errores.push("Debe ingresar sus apellidos");
+    }
     if(pass!==passR){
         errores.push("Error, las contraseñas no son iguales.");
     }
@@ -51,7 +53,7 @@ document.querySelector("#reg-cliente-btn").addEventListener("click", async()=>{
                 Swal.fire({
                     title: "Correcto",
                     icon: "success",
-                    text: "Usuario creado"
+                    text: "Cliente Registrado"
                 });
             }
         }

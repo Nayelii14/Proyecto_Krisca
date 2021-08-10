@@ -8,8 +8,16 @@
         
     </div>
     <div class="card-body ms-5 me-5">
+        <div class="row mt-5 mb-5" style="background-color: rgb(166, 229, 231);border-radius: 10px">
+            <div class="card-body">
+                <p>Somos una tienda de ropa que lleva creciendo 4 años, desde entonces, hemos permanecido en rapel, de la región de bernardo O'higgins. Tenemos todo tipo de productos de vestuario que te pueden encantar, te invitamos a conocernos!</p>
+            </div>
+        </div>
         <div class="col-12 col-md-12 col-lg-12">
             <div class="card">
+                <div class="card-header" id="bg">
+                    <span>Nuestra ubicación</span>
+                </div>
                 <div class="card-body text-center">
                     <div id="mapid" class="text-center"></div>
                 </div>

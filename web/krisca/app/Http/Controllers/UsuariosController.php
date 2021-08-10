@@ -18,6 +18,10 @@ class UsuariosController extends Controller
         $usuario = Usuario::where("correo",$filtro)->get();
         return $usuario;
     }
+    public function getAllUsers(){
+        $usuarios = Usuario::all();
+        return $usuarios;
+    }
     public function crearUsuario(Request $request){
         $input = $request->all();
         $usuario =new Usuario();
