@@ -11,7 +11,7 @@
                     <a class="nav-link ms-3 my-1" href="{{asset('ag_usuario')}}" id="ag_usuario">Agregar a un usuario administrador</a>
                     <a class="nav-link ms-3 my-1" href="{{asset('crear_producto')}}">Crear Producto</a>
                     <a class="nav-link ms-3 my-1" href="{{asset('a_e_producto')}}">Actualizar o Eliminar Producto</a>
-                    <a class="nav-link ms-3 my-1" href="{{asset('ajuste_stock')}}">Ajuste Stock</a>
+                    <!--<a class="nav-link ms-3 my-1" href="{{asset('ajuste_stock')}}">Ajuste Stock</a>-->
                     <a class="nav-link ms-3 my-1" href="{{asset('crear_categoria')}}">Crear categoría</a>
                     <a class="nav-link ms-3 my-1" href="{{asset('ver_categoria')}}">Ver categorías</a>
 

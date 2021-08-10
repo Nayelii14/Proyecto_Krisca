@@ -46,7 +46,7 @@
                     <div class="col-8 col-md-8 col-lg-8">
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="rut-txt" placeholder="rut">
-                            <label for="rut-txt">Rut</label>
+                            <label for="rut-txt">Rut(sin puntos ni guión)</label>
                         </div>
                     </div>
                 </form>

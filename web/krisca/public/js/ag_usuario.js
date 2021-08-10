@@ -46,7 +46,7 @@ document.querySelector("#agregar-usuario-btn").addEventListener("click", async()
                     console.log("buscando");
                     let respuesta = await Swal.fire({title: "Cliente existente",
                     icon: "warning",
-                    text: "Ya hay un cliente asociado con este correo\n Seguro que desea registrar como usuario?",
+                    text: "Ya hay un cliente asociado con este correo ¿Seguro que desea registrar como usuario?",
                     showCancelButton: true
                     });
                     if(respuesta.isConfirmed){
@@ -67,7 +67,7 @@ document.querySelector("#agregar-usuario-btn").addEventListener("click", async()
                         }
                     }else{
                         Swal.fire({
-                            title: "Accion Cancalada",
+                            title: "Accion Cancelada",
                             icon: "warning",
                             text: "La creación ha sido cancelada"
                         });
